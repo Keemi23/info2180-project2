@@ -1,22 +1,20 @@
 
-/*Additional features:
-- End-of-game notification
-- Multiple backgrounds (Grade)
-- Game time
+/*Additional feature:
+- Multiple backgrounds
 */
 window.onload = main;
 
-//Global Vaiable declarations
-var blank = ["300px", "300px"]; //coordinates for blank position
-var start = false; //indicates game start
-var moves = 0; //holds the number of moves made
-var start_time = 0; //Game start time
-var timer; // variable for timer 
+//Global Vaiable 
+var blank = ["300px", "300px"]; //here specifies the blank position
+var start = false; //refers to the starting of the game
+var moves = 0; //identifies the the number of moves made
+var start_time = 0; // Starting tiemfor the Game
+var timer; // time keeper 
 var total_time = 0; // total gameplay time
 var best_time = 0;
 var best_moves = 0;
 
-//Maze piece Initialization function and returns initial maze state
+//The code below shows the initail piece for the maze and it's return state
 function start_state() {
     var puzzle_area = document.getElementById("puzzlearea").childNodes;
     var initial_state = [];
@@ -48,12 +46,12 @@ function start_state() {
     return initial_state
 }
 
-//Checks if puzzle piece is movable
+//The code below inspects if the pieces can be moved
 function is_movable(piece) {
     return parseInt(piece.style.top) + 100 === parseInt(blank[0]) & parseInt(piece.style.left) === parseInt(blank[1]) | parseInt(piece.style.top) - 100 === parseInt(blank[0]) & parseInt(piece.style.left) === parseInt(blank[1]) | parseInt(piece.style.top) === parseInt(blank[0]) & parseInt(piece.style.left) - 100 === parseInt(blank[1]) | parseInt(piece.style.top) === parseInt(blank[0]) & parseInt(piece.style.left) + 100 === parseInt(blank[1])
 }
 
-//Checks if the current state of the maze board is the winning state
+//The code below inspects the current of the puzzle
 function check_for_win(winning_state, pieces) {
     if (start) {
         for (var i = 0; i < pieces.length; i++) {
@@ -67,7 +65,7 @@ function check_for_win(winning_state, pieces) {
     return false;
 }
 
-//switches piece with blank space
+//The code below inpects pieces to blank space
 function move_piece(piece, animate) {
     blank_top = piece.style.top;
     blank_left = piece.style.left;
@@ -96,7 +94,7 @@ function move_piece(piece, animate) {
     blank = [blank_top, blank_left];
 }
 
-//Shuffle the maze board
+//The code below randomly shuffle the puzzle
 function random_shuffle(pieces) {
     var pieceLength = pieces.length;
     var piece;
@@ -109,19 +107,19 @@ function random_shuffle(pieces) {
     }
 }
 
-//Returns all maze pieces
+//The code below generates the pieces of the puzzle
 function get_pieces() {
     return $(".puzzlepiece");
 }
 
-//returns HH:MM:SS time format from seconds
+//The code specifies the format of the time
 function seconds_to_time(seconds) {
     var date = new Date(null);
     date.setSeconds(seconds);
     return date.toISOString().substr(11, 8);
 }
 
-//returns current time since the start of the game
+//The code below tells the duration of the game
 function update_time() {
     var current_date = new Date();
     var current_time = (current_date.getHours() * 60 * 60) + (current_date.getMinutes() * 60) + current_date.getSeconds();
@@ -129,7 +127,7 @@ function update_time() {
     return seconds_to_time(total_time);
 }
 
-//Adds game time and moves made to DOM
+//The code below adds the time of the game and moves
 function update_stats() {
     $(".explanation")[0].innerHTML = `Time: ${update_time()} Moves: ${moves}`;
 }
