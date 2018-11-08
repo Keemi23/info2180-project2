@@ -1,5 +1,5 @@
 
-/*Additional feature:
+/*Extra feature:
 - Multiple backgrounds
 */
 window.onload = main;
