@@ -6,7 +6,7 @@ window.onload = main;
 
 //Global Vaiable 
 var blank = ["300px", "300px"]; //here specifies the blank position
-var start = false; //refers to the starting of the game
+var start = false; //identifies to the starting of the game
 var moves = 0; //identifies the the number of moves made
 var start_time = 0; // Starting tiemfor the Game
 var timer; // time keeper 
